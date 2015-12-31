@@ -6,6 +6,7 @@ gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "faraday"
+gem "nokogiri"
 
 group :development, :test do
   gem "capybara"
@@ -21,5 +22,6 @@ end
 
 group :test do
   gem "shoulda-matchers", "< 3.0.0", require: false
+  gem "webmock"
 end
 
