@@ -32,7 +32,8 @@ class DevoFetcher
     )
 
     verses.each do |verse|
-      Verse.create!(devo_id: devo.id, reference: verse)
+      verse = Verse.find_or_initialize_by(devo_id: devo.id, reference: verse)
+      verse.save
     end
 
     devo
