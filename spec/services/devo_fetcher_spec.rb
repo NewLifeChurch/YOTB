@@ -40,6 +40,17 @@ RSpec.describe DevoFetcher, type: :service do
     end
   end
 
+  describe "#main_verse" do
+    it "fetches and returns the head verse" do
+      expect(fetcher.main_verse).to eq (
+        {
+          reference: "Genesis 1:31",
+          text: "Then God looked over all he had made, and he saw that it was excellent in every way. This all happened on the sixth day."
+        }
+      )
+    end
+  end
+
   describe "#source_url" do
     it "should be from Bethany" do
       expect(fetcher.source_url).to eq "http://www.bethany.com"
@@ -63,6 +74,9 @@ RSpec.describe DevoFetcher, type: :service do
     it "saves a Devo" do
       expect { fetcher.save! }
         .to change { Devo.count }.by(1)
+    end
+
+    it "saves the verses" do
       expect { fetcher.save! }
         .to change { Verse.count }.by(4)
     end

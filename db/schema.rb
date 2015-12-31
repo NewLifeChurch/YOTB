@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231154136) do
+ActiveRecord::Schema.define(version: 20151231211030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,11 @@ ActiveRecord::Schema.define(version: 20151231154136) do
     t.integer  "day"
     t.date     "date"
     t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "main_verse_text"
+    t.string   "main_verse_reference"
+    t.string   "author"
   end
 
   create_table "verses", force: :cascade do |t|

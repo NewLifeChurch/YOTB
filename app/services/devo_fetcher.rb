@@ -24,11 +24,25 @@ class DevoFetcher
     @html ||= open(full_url).read
   end
 
+  def main_verse
+    full_verse = document.css('.verse').inner_html
+    reference  = full_verse.scan(verse_regex).first[0]
+    text       = full_verse.split(/<br>.+/).first
+
+    {
+      reference: reference.strip,
+      text: text.strip,
+    }
+  end
+
   def save!
     devo = Devo.find_or_initialize_by(day: day)
     devo.update!(
       date: date,
       text: devotional,
+      main_verse_text: main_verse[:text],
+      main_verse_reference: main_verse[:reference],
+      author: "Larry Stockstill",
     )
 
     verses.each do |verse|
@@ -48,7 +62,7 @@ class DevoFetcher
   end
 
   def self.fetch_full_year!
-    (0...364).each do |day|
+    (0...365).each do |day|
       date = "01-01-2015".to_date + day.days
       new(date).save!
     end
@@ -76,5 +90,9 @@ class DevoFetcher
 
   def url_date
     date.strftime("%d-%m-%Y")
+  end
+
+  def verse_regex
+    /<span>—(.+)<\/span>/
   end
 end
