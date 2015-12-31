@@ -7,6 +7,7 @@ gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "faraday"
 gem "nokogiri"
+gem "thin"
 
 group :development, :test do
   gem "capybara"
