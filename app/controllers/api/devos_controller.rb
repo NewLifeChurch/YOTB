@@ -28,8 +28,13 @@ module Api
       {
         day: devo.day,
         date: devo.date,
+        main_verse: {
+          text: devo.main_verse_text,
+          reference: devo.main_verse_reference,
+        },
         devotional: devo.text,
-        verses: devo.verses.map(&:reference)
+        verses: devo.verses.map(&:reference),
+        author: devo.author,
       }
     end
 
