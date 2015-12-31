@@ -1,0 +1,7 @@
+<h1>Devos</h1>
+
+<% @devos.each do |devo| %>
+  <div>
+    <%= link_to "Day: #{devo.day} - #{devo.date}", devo_path(devo.day) %>
+  </div>
+<% end %>
