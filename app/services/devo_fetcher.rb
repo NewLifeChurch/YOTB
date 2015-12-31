@@ -47,7 +47,7 @@ class DevoFetcher
   end
 
   def self.fetch_full_year!
-    (0..365).each do |day|
+    (0...364).each do |day|
       date = "01-01-2015".to_date + day.days
       new(date).save!
     end
