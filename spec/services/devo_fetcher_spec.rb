@@ -60,10 +60,11 @@ RSpec.describe DevoFetcher, type: :service do
   describe "#verses" do
     it "returns an array of the verses" do
       expected = [
-        "Genesis 1:1-2:25",
-        "Matthew 1:1-2:12",
-        "Psalm 1:1-1:6",
-        "Proverbs 1:1-1:6",
+        "genesis 1:1-2:25",
+        "matthew 1:1-2:12",
+        "psalm 1:1-1:6",
+        "proverbs 1:1-1:6",
+        "gen 50:1-26-exo 1:1-2:10",
       ]
 
       expect(fetcher.verses).to eq expected
@@ -78,7 +79,7 @@ RSpec.describe DevoFetcher, type: :service do
 
     it "saves the verses" do
       expect { fetcher.save! }
-        .to change { Verse.count }.by(4)
+        .to change { Verse.count }.by(5)
     end
   end
 end

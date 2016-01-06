@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231211030) do
+ActiveRecord::Schema.define(version: 20160106230716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20151231211030) do
 
   create_table "verses", force: :cascade do |t|
     t.integer  "devo_id"
-    t.string   "reference"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "raw_reference"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
