@@ -7,7 +7,11 @@ require 'spec_helper'
 require 'rspec/rails'
 require "shoulda/matchers"
 require "webmock/rspec"
+require "capybara/rspec"
 # Add additional requires below this line. Rails is not loaded until this point!
+
+Capybara.current_driver = :selenium
+Capybara.default_max_wait_time = 15
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -22,7 +26,7 @@ require "webmock/rspec"
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

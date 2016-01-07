@@ -46,7 +46,10 @@ class DevoFetcher
     )
 
     verses.each do |verse|
-      verse = Verse.find_or_initialize_by(devo_id: devo.id, reference: verse)
+      verse = Verse.find_or_initialize_by(
+        devo_id: devo.id, raw_reference: verse
+      )
+
       verse.save
     end
 
@@ -79,13 +82,7 @@ class DevoFetcher
   end
 
   def parse_verses
-    document.css("#daily-nav nav li a")[1..-2].map(&:text).map do |text|
-      parts  = text.split
-      book   = parts[0..-2].map(&:titleize).join(" ")
-      verses = parts[-1]
-
-      "#{book} #{verses}"
-    end
+    @parse_verses = document.css("#daily-nav nav li a")[1..-2].map(&:text)
   end
 
   def url_date
